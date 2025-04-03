@@ -1,12 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import signin from "../../services/signin";
 export default function Signin({setPage}) {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    const {email, password} = data;
+    await signin(email, password);
+  }
 
   return (
     <>

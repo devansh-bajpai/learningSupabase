@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import signup from "../../services/signup";
 
 
 export default function Signup({ setPage }) {
@@ -9,8 +10,9 @@ export default function Signup({ setPage }) {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data)
+  const onSubmit = async (data) => {
+    const {email, password, confirmPassword} = data;
+    await signup(email, password, confirmPassword);
 
 
   }
